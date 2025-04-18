@@ -161,7 +161,10 @@ def retrieve_data():
                 st.rerun()
                 return
 
-        passkey = st.text_input("🔐 Passkey", type="password")
+        if st.session_state.Attempts.get(user, 0) < 3:
+            passkey = st.text_input("🔐 Passkey", type="password")
+        else:
+            passkey = None  
 
         if st.button("🔍 Decrypt"):
             if user in st.session_state.stored_data:
