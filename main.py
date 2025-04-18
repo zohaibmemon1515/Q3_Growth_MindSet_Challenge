@@ -8,62 +8,74 @@ def hass_Pass(Passkey):
 def inject_css():
     st.markdown("""
         <style>
-            html, body {
-                background-color: #f0f2f6;
-                font-family: 'Segoe UI', sans-serif;
-                color: #1f2937;
+            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+            html, body, [class*="css"] {
+                font-family: 'Inter', sans-serif;
+                background-color: #f8f9fb;
+                color: #333;
+            }
+
+            .block-container {
+                padding: 2rem 3rem;
             }
 
             .stButton>button {
+                border-radius: 8px;
+                padding: 0.6rem 1.2rem;
                 background: linear-gradient(135deg, #667eea, #764ba2);
                 color: white;
-                border: none;
-                padding: 0.7rem 1.5rem;
-                border-radius: 10px;
-                font-size: 16px;
                 font-weight: 600;
-                transition: all 0.3s ease;
+                border: none;
+                transition: all 0.3s ease-in-out;
+                margin-top: 1rem;
+                box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
             }
 
             .stButton>button:hover {
-                transform: scale(1.03);
+                transform: scale(1.04);
                 background: linear-gradient(135deg, #5a67d8, #6b46c1);
             }
 
             .stTextInput>div>div>input,
             .stTextArea textarea {
-                border-radius: 10px !important;
+                border-radius: 8px !important;
                 padding: 0.75rem !important;
                 border: 1px solid #ccc;
-                background-color: #fff !important;
-            }
-
-            .block-container {
-                padding: 2rem 2rem 3rem;
-                max-width: 750px;
-                margin: auto;
+                background-color: #fff;
             }
 
             .stRadio > div {
-                flex-direction: row !important;
-                justify-content: center;
+                flex-direction: column !important;
             }
 
-            .card {
-                background-color: #ffffff;
-                padding: 2rem;
-                border-radius: 15px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-                margin-top: 2rem;
+            
+            .css-1d391kg, .css-1n76uvr {
+                padding: 2rem 1rem 2rem 1rem;
+                background: #ffffff;
+                border-right: 1px solid #eee;
             }
 
-            h1, h2, h3 {
-                color: #373f51;
+            .css-1n76uvr h1, .css-1d391kg h1 {
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
             }
 
-            .title {
-                text-align: center;
-                margin-bottom: 2rem;
+            .css-1v3fvcr {
+                margin-top: 1rem;
+            }
+
+           
+            h1, h2, h3, h4, h5 {
+                color: #333;
+                font-weight: 600;
+            }
+
+           
+            .markdown-text-container {
+                font-size: 0.95rem;
+                color: #555;
             }
         </style>
     """, unsafe_allow_html=True)
