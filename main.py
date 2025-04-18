@@ -161,29 +161,32 @@ def retrieve_data():
                 st.rerun()
                 return
 
+       
         if st.session_state.Attempts.get(user, 0) < 3:
             passkey = st.text_input("🔐 Passkey", type="password")
         else:
             passkey = None  
 
         if st.button("🔍 Decrypt"):
-            if user in st.session_state.stored_data:
-                hashed_input = hass_Pass(passkey)
-                actual = st.session_state.stored_data[user]
+            if passkey:
+                if user in st.session_state.stored_data:
+                    hashed_input = hass_Pass(passkey) if passkey else None  # Ensure passkey isn't None
+                    actual = st.session_state.stored_data[user]
 
-                if hashed_input == actual["passkey"]:
-                    decrypted = st.session_state.cipher_suite.decrypt(actual["encrypted_text"].encode()).decode()
-                    st.success("✅ Decryption successful!")
-                    st.markdown("#### 📄 Your Decrypted Data:")
-                    st.code(decrypted, language='text')
-                    st.session_state.Attempts[user] = 0
-                else:
-                    st.session_state.Attempts[user] = st.session_state.Attempts.get(user, 0) + 1
-                    st.error(f"❌ Incorrect passkey. Attempts: {st.session_state.Attempts[user]} / 3")
-                    if st.session_state.Attempts[user] >= 3:
-                        st.session_state.login_Required[user] = True
+                    if hashed_input == actual["passkey"]:
+                        decrypted = st.session_state.cipher_suite.decrypt(actual["encrypted_text"].encode()).decode()
+                        st.success("✅ Decryption successful!")
+                        st.markdown("#### 📄 Your Decrypted Data:")
+                        st.code(decrypted, language='text')
+                        st.session_state.Attempts[user] = 0  # Reset attempts after successful decryption
+                    else:
+                        st.session_state.Attempts[user] = st.session_state.Attempts.get(user, 0) + 1
+                        st.error(f"❌ Incorrect passkey. Attempts: {st.session_state.Attempts[user]} / 3")
+                        if st.session_state.Attempts[user] >= 3:
+                            st.session_state.login_Required[user] = True
             else:
-                st.warning("⚠️ No stored data found.")
+                st.warning("⚠️ You have reached the maximum number of failed attempts. Please log in again.")
+
 
 def main():
     st.set_page_config(page_title="Secure Vault 🛡️", page_icon="🛡️")
