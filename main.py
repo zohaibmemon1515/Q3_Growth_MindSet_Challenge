@@ -12,73 +12,91 @@ def inject_css():
 
             html, body, [class*="css"] {
                 font-family: 'Inter', sans-serif;
-                background-color: #f8f9fb;
-                color: #333;
+                background-color: #f0f2f5;
+                color: #2c3e50;
             }
 
             .block-container {
-                padding: 2rem 3rem;
+                padding: 3rem 2rem;
             }
 
             .stButton>button {
-                border-radius: 8px;
-                padding: 0.6rem 1.2rem;
+                border-radius: 10px;
+                padding: 0.75rem 1.5rem;
                 background: linear-gradient(135deg, #667eea, #764ba2);
                 color: white;
                 font-weight: 600;
                 border: none;
                 transition: all 0.3s ease-in-out;
-                margin-top: 1rem;
-                box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+                box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
             }
 
             .stButton>button:hover {
-                transform: scale(1.04);
+                transform: scale(1.05);
                 background: linear-gradient(135deg, #5a67d8, #6b46c1);
+                cursor: pointer;
             }
 
             .stTextInput>div>div>input,
             .stTextArea textarea {
-                border-radius: 8px !important;
-                padding: 0.75rem !important;
+                border-radius: 10px !important;
+                padding: 0.85rem !important;
                 border: 1px solid #ccc;
-                background-color: #fff;
+                background-color: #ffffff;
+                box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
             }
 
             .stRadio > div {
                 flex-direction: column !important;
+                gap: 0.5rem;
+                font-weight: 500;
             }
 
-            
-            .css-1d391kg, .css-1n76uvr {
-                padding: 2rem 1rem 2rem 1rem;
-                background: #ffffff;
-                border-right: 1px solid #eee;
+            .css-1n76uvr, .css-1d391kg {
+                background: white;
+                padding: 2rem;
+                border-radius: 12px;
+                box-shadow: 0px 3px 20px rgba(0,0,0,0.05);
+                margin-bottom: 2rem;
             }
 
-            .css-1n76uvr h1, .css-1d391kg h1 {
-                font-size: 1.25rem;
-                font-weight: 600;
-                margin-bottom: 1rem;
+            .stMarkdown h1, .stMarkdown h2, .stMarkdown h3 {
+                color: #222;
+                font-weight: 700;
             }
 
-            .css-1v3fvcr {
-                margin-top: 1rem;
-            }
-
-           
-            h1, h2, h3, h4, h5 {
-                color: #333;
-                font-weight: 600;
-            }
-
-           
             .markdown-text-container {
-                font-size: 0.95rem;
+                font-size: 1rem;
                 color: #555;
+            }
+
+            /* Sidebar Styling */
+            section[data-testid="stSidebar"] {
+                background: linear-gradient(180deg, #f6f9fc, #e9eff5);
+                padding: 2rem 1.5rem;
+                border-right: 1px solid #e0e0e0;
+            }
+
+            .st-emotion-cache-1v3fvcr {
+                padding: 2rem 1rem;
+            }
+
+            /* Custom Card Layouts */
+            .card {
+                background: white;
+                border-radius: 12px;
+                padding: 2rem;
+                box-shadow: 0px 4px 25px rgba(0,0,0,0.07);
+                margin-bottom: 2rem;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .card:hover {
+                box-shadow: 0px 8px 30px rgba(0,0,0,0.1);
             }
         </style>
     """, unsafe_allow_html=True)
+
 
 def signup_page():
     with st.container():
